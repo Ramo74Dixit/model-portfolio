@@ -6,23 +6,24 @@ import Footer from './components/Footer';
 import Profile from './components/Profile';  // Example component for the "Profile" page
 import Gallery from './components/Gallery';  // Example component for the "Gallery" page
 import Booking from './components/Booking';  // Example component for the "Booking" page
-
+import "./App.css"; // Import the CSS file
 function App() {
   return (
     <Router>
-      <div className="min-h-screen flex flex-col items-center">
-        <div className="w-full max-w-[1440px]">
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<MainPage />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/booking" element={<Booking />} />
-          </Routes>
-          <Footer />
-        </div>
+    <div className="min-h-screen flex flex-col">
+      <Navbar />
+      <div className="flex-grow flex flex-col items-center w-full">
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/booking" element={<Booking />} />
+        </Routes>
       </div>
-    </Router>
+      <Footer />
+    </div>
+  </Router>
+  
   );
 }
 
