@@ -11,15 +11,11 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors(
   {
-    origin:["https://model-portfolio-pn29.vercel.app/"],
+    origin:["https://model-portfolio-one.vercel.app/"],
      methods:["POST","GET"],
      credentials:true
   }
 ));
-
-app.get("/",(req,res)=>{
-  res.send("Hello");
-})
 
 // JWT Secret
 const JWT_SECRET = 'your_jwt_secret'; // Replace with a strong secret in production
