@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+require('dotenv').config(); // Load environment variables
 
 const app = express();
 
@@ -11,11 +12,11 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-// JWT Secret
-const JWT_SECRET = 'your_jwt_secret'; // Replace with a strong secret in production
+// JWT Secret from environment variables
+const JWT_SECRET = process.env.JWT_SECRET || 'default_jwt_secret'; // Fallback to a default in case it's not set
 
-// MongoDB Atlas connection
-const MONGODB_URI = 'mongodb+srv://ramodixit577:RAMZPYR6JTnm8kRQ@cluster0.ninch.mongodb.net/modelportfoliodb?retryWrites=true&w=majority&appName=Cluster0';
+// MongoDB Atlas connection using environment variables
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/yourlocaldb'; // Fallback to a local DB
 
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
@@ -62,10 +63,7 @@ app.post('/api/booking', async (req, res) => {
     // Send success response
     res.status(201).send('Booking saved successfully');
   } catch (error) {
-    // Log the error details to the console for debugging
     console.error('Error saving booking:', error);
-
-    // Send error response to the client
     res.status(500).send('Error saving booking');
   }
 });
