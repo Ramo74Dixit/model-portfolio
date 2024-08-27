@@ -29,7 +29,7 @@ const Booking = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://cloud.mongodb.com/v2/66cd7c6dbb9d570c66942f3a#/metrics/replicaSet/66cd7d87429c3d67149d407d/explorer/modelportfoliodb/bookings/', {
+      const response = await fetch('https://model-portfolio-3.onrender.com/booking', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
