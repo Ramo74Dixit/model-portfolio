@@ -15,13 +15,16 @@ app.use(cors());
 const JWT_SECRET = 'your_jwt_secret'; // Replace with a strong secret in production
 
 // MongoDB Atlas connection
-mongoose.connect('mongodb://localhost:27017/modelportfoliodb', {
+const MONGODB_URI = 'mongodb+srv://ramodixit577:RAMZPYR6JTnm8kRQ@cluster0.ninch.mongodb.net/modelportfoliodb?retryWrites=true&w=majority&appName=Cluster0';
+
+mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-}).then(() => console.log('Connected to MongoDB'))
-  .catch(err => console.error('Failed to connect to MongoDB:', err));
+})
+.then(() => console.log('Connected to MongoDB'))
+.catch(err => console.error('Failed to connect to MongoDB:', err));
 
-// Mongoose Schema and Model
+// Mongoose Schema and Model for Booking
 const bookingSchema = new mongoose.Schema({
   date: String,
   time: String,
@@ -37,7 +40,7 @@ const bookingSchema = new mongoose.Schema({
   itemsType: String,
   makeupType: String,
   others: String,
-  password: String, // Will be hashed in production
+  password: { type: String, required: true }, // Required field
 });
 
 const Booking = mongoose.model('Booking', bookingSchema);
@@ -45,11 +48,24 @@ const Booking = mongoose.model('Booking', bookingSchema);
 // Endpoint to handle booking form submission
 app.post('/api/booking', async (req, res) => {
   try {
+    console.log('Request body:', req.body); // Log received data for debugging
+    
+    // Hash the password
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    
+    // Create a new booking document with the hashed password
     const newBooking = new Booking({ ...req.body, password: hashedPassword });
+    
+    // Save the booking to the database
     await newBooking.save();
+    
+    // Send success response
     res.status(201).send('Booking saved successfully');
   } catch (error) {
+    // Log the error details to the console for debugging
+    console.error('Error saving booking:', error);
+
+    // Send error response to the client
     res.status(500).send('Error saving booking');
   }
 });
@@ -79,6 +95,7 @@ app.post('/api/login', async (req, res) => {
       name: user.photographerName,
     });
   } catch (error) {
+    console.error('Error logging in:', error);
     res.status(500).send('Error logging in');
   }
 });
@@ -122,7 +139,7 @@ app.post('/api/change-password', authenticateToken, async (req, res) => {
 
     res.status(200).send('Password changed successfully');
   } catch (error) {
-    console.error("Error changing password:", error);
+    console.error('Error changing password:', error);
     res.status(500).send('Error changing password');
   }
 });
