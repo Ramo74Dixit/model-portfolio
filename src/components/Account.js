@@ -24,7 +24,7 @@ const ChangePassword = () => {
       return;
     }
 
-    const response = await fetch("https://model-portfolio-1p4h.vercel.app/api/change-password", {
+    const response = await fetch("https://model-portfolio-beta.vercel.app/api/change-password", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
