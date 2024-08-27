@@ -9,7 +9,13 @@ const app = express();
 
 // Middleware
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors(
+  {
+    origin:["https://model-portfolio-pn29.vercel.app/"],
+     methods:["POST","GET"],
+     credentials:true
+  }
+));
 
 // JWT Secret
 const JWT_SECRET = 'your_jwt_secret'; // Replace with a strong secret in production
