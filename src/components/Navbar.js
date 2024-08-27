@@ -34,6 +34,7 @@ const Navbar = () => {
           <li><a href="/profile" onClick={() => setIsMenuOpen(false)} className="hover:text-gray-700">Profile</a></li>
           <li><a href="/gallery" onClick={() => setIsMenuOpen(false)} className="hover:text-gray-700">Gallery</a></li>
           <li><a href="/booking" onClick={() => setIsMenuOpen(false)} className="hover:text-gray-700">Booking</a></li>
+          <li><a href="/login" onClick={() => setIsMenuOpen(false)} className="hover:text-gray-700">Login</a></li>
         </ul>
       </div>
     </div>

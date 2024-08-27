@@ -20,7 +20,6 @@ import img17 from "../assets/gallery/gal-17.png";
 import img18 from "../assets/gallery/gal-18.png";
 import "../App.css"; // Import the CSS file
 import img19 from "../assets/main/Rectangle 14.png";
-
 const Gallery = () => {
   return (
     <div className="gallery-container min-h-screen flex flex-col md:flex-row ">
