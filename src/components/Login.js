@@ -11,7 +11,7 @@ function Login() {
     e.preventDefault();
 
     try {
-      const response = await fetch('https://model-portfolio-3.onrender.com/api/login', {
+      const response = await fetch('https://model-portfolio-1p4h.vercel.app/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

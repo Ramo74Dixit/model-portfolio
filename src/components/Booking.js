@@ -29,7 +29,7 @@ const Booking = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://model-portfolio-3.onrender.com/booking', {
+      const response = await fetch('https://model-portfolio-1p4h.vercel.app/booking', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
