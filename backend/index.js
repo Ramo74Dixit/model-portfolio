@@ -17,6 +17,10 @@ app.use(cors(
   }
 ));
 
+app.get("/",(req,res)=>{
+  res.send("Hello");
+})
+
 // JWT Secret
 const JWT_SECRET = 'your_jwt_secret'; // Replace with a strong secret in production
 
