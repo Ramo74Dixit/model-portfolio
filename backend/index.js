@@ -115,6 +115,7 @@ const authenticateToken = (req, res, next) => {
   });
 };
 
+
 // Endpoint to change password (protected route)
 app.post('/api/change-password', authenticateToken, async (req, res) => {
   const { currentPassword, newPassword } = req.body;
