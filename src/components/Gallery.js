@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import img1 from "../assets/gallery/gal-1.png";
 import img2 from "../assets/gallery/gal-2.png";
@@ -18,11 +18,23 @@ import img15 from "../assets/gallery/gal-15.png";
 import img16 from "../assets/gallery/gal-16.png";
 import img17 from "../assets/gallery/gal-17.png";
 import img18 from "../assets/gallery/gal-18.png";
-import "../App.css"; // Import the CSS file
 import img19 from "../assets/main/Rectangle 14.png";
+import "../App.css";
+
 const Gallery = () => {
+  useEffect(() => {
+    const images = document.querySelectorAll('.gallery-image');
+    const screenWidth = window.innerWidth;
+
+    if (screenWidth <= 640) { // Tailwind's sm breakpoint
+      images.forEach(image => {
+        image.classList.add('animate-slide-up');
+      });
+    }
+  }, []);
+
   return (
-    <div className="gallery-container min-h-screen flex flex-col md:flex-row ">
+    <div className="gallery-container min-h-screen flex flex-col md:flex-row">
       {/* Sidebar */}
       <div
         className="w-full h-[7vh] md:w-1/4 bg-gradient-to-b from-pink-200 to-white bg-cover bg-center flex flex-col md:flex-col items-center justify-center pl-4 pr-0 pt-4 pb-4"
@@ -48,129 +60,126 @@ const Gallery = () => {
 
       {/* Gallery Grid */}
       <div className="w-full pt-0 pb-0 pl-2 pr-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
-        <div className="w-full h-auto">
+        <div className="w-full h-auto gallery-image">
           <img
             src={img1}
             alt="Gallery Image 1"
-            className="w-full h-full object-cover "
+            className="w-full h-full object-cover"
           />
         </div>
-        <div className="col-span-2 w-full h-auto">
+        <div className="col-span-2 w-full h-auto gallery-image">
           <img
             src={img2}
             alt="Gallery Image 2"
             className="w-full h-full object-cover"
           />
         </div>
-
-        <div className="row-span-2 w-full h-auto">
+        <div className="row-span-2 w-full h-auto gallery-image">
           <img
             src={img3}
             alt="Gallery Image 3"
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="w-full h-auto">
+        <div className="w-full h-auto gallery-image">
           <img
             src={img4}
             alt="Gallery Image 4"
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="w-full h-auto">
+        <div className="w-full h-auto gallery-image">
           <img
             src={img5}
             alt="Gallery Image 5"
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="w-full h-auto">
+        <div className="w-full h-auto gallery-image">
           <img
             src={img6}
             alt="Gallery Image 6"
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="w-full h-auto">
+        <div className="w-full h-auto gallery-image">
           <img
             src={img7}
             alt="Gallery Image 7"
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="row-span-3 w-full h-auto">
+        <div className="row-span-3 w-full h-auto gallery-image">
           <img
             src={img8}
             alt="Gallery Image 8"
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="row-span-2 w-full h-auto">
+        <div className="row-span-2 w-full h-auto gallery-image">
           <img
             src={img9}
             alt="Gallery Image 9"
             className="w-full h-full object-cover"
           />
         </div>
-
-        <div className="row-span-3 w-full h-auto">
+        <div className="row-span-3 w-full h-auto gallery-image">
           <img
             src={img10}
             alt="Gallery Image 10"
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="md:[h-64] w-full h-auto">
+        <div className="md:[h-64] w-full h-auto gallery-image">
           <img
             src={img11}
             alt="Gallery Image 11"
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="col-span-2 w-full h-auto">
+        <div className="col-span-2 w-full h-auto gallery-image">
           <img
             src={img12}
             alt="Gallery Image 12"
             className="w-full h-full object-cover"
           />
         </div>
-
-        <div className="w-full h-auto">
+        <div className="w-full h-auto gallery-image">
           <img
             src={img13}
             alt="Gallery Image 13"
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="w-full h-auto">
+        <div className="w-full h-auto gallery-image">
           <img
             src={img15}
             alt="Gallery Image 15"
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="col-span-2 w-full h-auto">
+        <div className="col-span-2 w-full h-auto gallery-image">
           <img
             src={img14}
             alt="Gallery Image 14"
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="col-span-3 md:h-[700px] w-full h-auto">
+        <div className="col-span-3 md:h-[700px] w-full h-auto gallery-image">
           <img
             src={img16}
             alt="Gallery Image 16"
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="w-full h-auto">
+        <div className="w-full h-auto gallery-image">
           <img
             src={img17}
             alt="Gallery Image 17"
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="col-span-2 w-full h-auto">
+        <div className="col-span-2 w-full h-auto gallery-image">
           <img
             src={img18}
             alt="Gallery Image 18"
