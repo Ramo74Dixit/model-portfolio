@@ -22,12 +22,17 @@ const MainPage = () => {
   }, []);
 
   return (
-    <div className="w-full min-h-[82vh] flex flex-col md:flex-row">
+    <div className="w-full h-[80vh] flex flex-col md:flex-row">
       <div className="flex flex-row md:flex-row flex-grow">
-        <div
-          className="w-[186px] md:w-[286px] h-[100vh] md:h-[82vh] bg-cover bg-center"
-          style={{ backgroundImage: `url(${mainImg1})` }}
-        ></div>
+      <div
+  className="w-[186px] md:w-[286px] h-[100vh] md:h-[82vh] bg-cover bg-center shutter-bg"
+  style={{
+    backgroundImage: `url(${mainImg1})`,
+    backgroundSize: 'cover', // Ensures the image covers the div
+    backgroundPosition: 'center', // Centers the image
+  }}
+></div>
+
 
         <div className="w-full md:w-[1000px] h-[100vh] md:h-[82vh] bg-cover bg-center">
           <div
@@ -60,11 +65,11 @@ const MainPage = () => {
         </div>
 
         <div
-          className="w-full md:w-full h-[100vh] md:h-[82vh] bg-cover bg-center"
+          className="w-full md:w-full h-[100vh] md:h-[82vh] bg-cover bg-center shutter-bg shutter-container"
           style={{ backgroundImage: `url(${mainImg2})` }}
         ></div>
         <div
-          className="w-full md:w-full h-[100vh] md:h-[82vh] bg-cover bg-center"
+          className="w-full md:w-full h-[100vh] md:h-[82vh] bg-cover bg-center shutter-bg shutter-container shutter-container img "
           style={{ backgroundImage: `url(${mainImg3})` }}
         ></div>
       </div>
